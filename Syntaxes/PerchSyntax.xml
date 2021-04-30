@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="perchCMS">
+    <meta>
+        <name>Perch</name>
+        <type>markup</type>
+        <preferred-file-extension>html</preferred-file-extension>
+        <parent>html</parent>
+    </meta>
+    
+    <detectors>
+    <combo priority="1.0">
+        <extension>html</extension>
+        <match-content>&lt;perch</match-content>
+    </combo>
+    </detectors>    
+    
+<comments>
+    <multiline>
+        <starts-with>
+            <expression>&lt;!--*</expression>
+        </starts-with>
+        <ends-with>
+            <expression>*--&gt;</expression>
+        </ends-with>
+    </multiline>
+</comments>
+    
+    <brackets>
+        <pair open="&lt;" close="&gt;" />
+        <pair open="{" close="}" />
+        <pair open="%" close="%" />
+    </brackets>
+    
+    <surrounding-pairs>
+        <pair open="&lt;" close="&gt;" />
+        <pair open="{" close="}" />
+        <pair open="%" close="%" />
+        <pair open="[" close="]" />
+        <pair open="(" close=")" />
+        <pair open="&apos;" close="&apos;" />
+        <pair open="&quot;" close="&quot;" />
+        <pair open="`" close="`" />
+    </surrounding-pairs>
+<scopes>
+    <include syntax="html" />
+</scopes>
+<template-scopes>
+    <include syntax="perch" collection="perch.entities" />
+</template-scopes>
+</syntax>

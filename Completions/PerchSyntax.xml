@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <provider name="perch.applications">
+        <syntax>perchCMS</syntax>
+            <selector>perch.tag.open.single</selector>
+            <expression>(?&lt;=\&lt;)[a-zA-Z0-9_-]*</expression>
+
+            <set>perch.applications</set>
+        </provider>
+      
+        <provider name="perch.terms">
+        <syntax>perchCMS</syntax>
+            <selector>perch.tag.attribute.name</selector>
+            <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
+            <set>perch.entities</set>
+        </provider>
+    
+        <provider name="perch.type.values">
+            <syntax>perchCMS</syntax>
+                <selector>perch.tag.attribute.type.value.double-quoted</selector>
+                <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
+                <set>perch.type.values</set>
+        </provider>
+        <provider name="perch.tag.attribute.editor.value.double-quoted">
+        <syntax>perchCMS</syntax>
+            <selector>perch.tag.attribute.editor.value.double-quoted</selector>
+            <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
+            <set>perch.tag.editor.value</set>
+        </provider>
+
+    <!-- Entities, Perch Tags. These are often part of the TYPE expansion. -->
+    <set name="perch.entities" symbol="tag">
+        <completion string="id">
+            <behavior>
+                <append>=&quot;$[id]&quot;</append>
+            </behavior>
+            </completion>
+
+        <completion string="type">
+        <behavior>
+            <append>=&quot;$[]&quot;</append>
+        </behavior>
+        </completion>
+
+        <completion string="label">
+        <behavior>
+            <append>=&quot;$[label]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="width">
+        <behavior>
+            <append>=&quot;$[width]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="height" symbol="class" >
+        <behavior>
+            <append>=&quot;$[height]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="suppress"/>
+        <completion string="size">
+        <behavior>
+            <append>=&quot;$[s,m,l]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="help">
+        <behavior>
+            <append>=&quot;$[help text…]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="crop"/>
+        <completion string="divider-before">
+        <behavior>
+            <append>=&quot;$[divider…]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="divider-after">
+        <behavior>
+            <append>=&quot;$[divider…]&quot;</append>
+        </behavior>
+        </completion>
+        <completion string="required"/>
+    </set>
+    <set name="perch.applications">
+    <behavior variables="true" suffix="(?!&gt;)">
+        <append>&gt;$[]&lt;/${completion}&gt;</append>
+    </behavior>
+          <completion string="perch:content"/>
+          <completion string="perch:events"/>
+          <completion string="perch:blog"/>
+          <completion string="perch:members"/>
+          <completion string="perch:categories"/>
+          <completion string="perch:category"/>
+          <completion string="perch:shop"/>
+          <completion string="perch:forms"/>
+    </set> 
+        
+<set name="perch.type.values" symbol="type">
+<behavior>
+    <arguments shouldCompleteOnConfirm="true" />
+</behavior>
+    <completion string="checkbox">
+      <behavior>
+      <arguments shouldCompleteOnConfirm="true" />
+          <append>&quot; label=&quot;$[label]&quot; value=&quot;$[value]</append>
+      </behavior>
+    </completion>
+    <completion string="composite">
+      <behavior>
+      <arguments shouldCompleteOnConfirm="true" />
+          <append>&quot; for=&quot;$[for]</append>
+      </behavior>
+    </completion>
+    <completion string="dataselect">
+      <behavior>
+      <arguments shouldCompleteOnConfirm="true" />
+          <append>&quot; page=&quot;$[page]&quot; region=&quot;$[region]&quot; options=&quot;$[options]&quot; values=&quot;$[values]</append>
+      </behavior>
+    </completion>
+    <completion string="date">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot; format=&quot;$[format]</append>
+        </behavior>
+    </completion>
+    <completion string="file">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot; file-type=&quot;$[file-type]</append>
+        </behavior>
+    </completion>
+    <completion string="hidden"/>
+    <completion string="image">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; width=&quot;$[width]&quot; height=&quot;$[height] $[crop]</append>
+        </behavior>
+    </completion>
+    <completion string="map">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot; width=&quot;$[width]&quot;  height=&quot;$[height] zoom=&quot;$[zoom]</append>
+        </behavior>
+    </completion>
+    <completion string="period">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot;</append>
+        </behavior>
+    </completion>
+    <completion string="radio">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot; optiona=&quot;$[options]</append>
+        </behavior>
+    </completion>
+    <completion string="select">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]&quot; options=&quot;$[options]&quot; allowempty=&quot;allowempty&quot; $[required] $[suppress}</append>
+        </behavior>
+    </completion>
+    <completion string="slug">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; for=&quot;$[for]&quot;  $[editable]</append>
+        </behavior>
+    </completion>        
+    <completion string="smarttext">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]</append>
+        </behavior>
+    </completion>
+    <completion string="text">
+        <behavior>
+        <arguments shouldCompleteOnConfirm="true" />
+            <append>&quot; label=&quot;$[label]</append>
+        </behavior>
+    </completion>
+    <completion string="textarea">
+    <behavior>
+    <arguments shouldCompleteOnConfirm="true" />
+        <append>&quot; label=&quot;$[label]&quot; editor=&quot;$[editor]&quot; editor-config=&quot;$[editor-config]&quot; help=&quot;$[help]&quot; $[html]  size=&quot;$[size]</append>
+    </behavior>
+    </completion>
+</set> 
+<set name="perch.tag.editor.value" symbol="editor">
+    <completion string="redactor"/>
+    <completion string="ckeditor"/>
+    <completion string="markitup"/>
+</set>
+    
+    
+
+</completions>
