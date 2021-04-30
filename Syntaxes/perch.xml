@@ -163,7 +163,7 @@
 	  <capture number="1" name="perch.tag.attribute.value.quote.right" />
   </ends-with>
   <subscopes>
-	  <include syntax="self" collection="perch.attribute-values-double-quoted" />
+	  <include syntax="self" collection="perch.attributes" />
   </subscopes>
 </scope>
 
@@ -176,7 +176,6 @@
 		<expression>\*--&gt;</expression>
 	</ends-with>
 </scope>
-	
 
 </collection>
 
@@ -254,7 +253,7 @@
 			<capture number="1" name="perch.tag.attribute.value.quote.right" />
 		</ends-with>
 		<subscopes>
-			<include syntax="self" collection="attribute-values-double-quoted" />
+			<include syntax="self" collection="perch.attributes" />
 		</subscopes>
 	</scope>
 	<scope name="perch.tag.attribute.unquoted">
@@ -267,7 +266,7 @@
 			<expression>(?=\s|/|&gt;|$)</expression>
 		</ends-with>
 		<subscopes>
-			<include syntax="self" collection="attribute-values-unquoted" />
+			<include syntax="self" collection="perch.attributes" />
 		</subscopes>
 	</scope>
 	<scope name="perch.tag.attribute.bare">
