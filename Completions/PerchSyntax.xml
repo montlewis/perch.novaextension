@@ -2,8 +2,8 @@
 <completions>
     <provider name="perch.applications">
         <syntax>perchCMS</syntax>
-            <selector>perch.tag.open.single</selector>
-            <expression>(?&lt;=\&lt;)[a-zA-Z0-9_-]*</expression>
+            <selector>perch.tag.name</selector>
+            <expression>(?&lt;=perch:).[a-z]*</expression>
 
             <set>perch.applications</set>
         </provider>
@@ -32,7 +32,7 @@
     <set name="perch.entities" symbol="tag">
         <completion string="id">
             <behavior>
-                <append>=&quot;$[id]&quot;</append>
+                <append>=&quot;$[id]&quot; &gt;</append>
             </behavior>
             </completion>
 
@@ -80,21 +80,23 @@
         </behavior>
         </completion>
         <completion string="required"/>
+        <completion string="rgb" symbol="function">
+            <behavior suffix="\(">
+                <append>($[])</append>
+            </behavior>
+        </completion>
     </set>
-    <set name="perch.applications">
-    <behavior variables="true" suffix="(?!&gt;)">
-        <append>&gt;$[]&lt;/${completion}&gt;</append>
-    </behavior>
-          <completion string="perch:content"/>
-          <completion string="perch:events"/>
-          <completion string="perch:blog"/>
-          <completion string="perch:members"/>
-          <completion string="perch:categories"/>
-          <completion string="perch:category"/>
-          <completion string="perch:shop"/>
-          <completion string="perch:forms"/>
-    </set> 
-        
+    <set name="perch.applications" symbol="name">
+<behavior complete-on-confirm="true"/>
+          <completion string="content"/>
+          <completion string="events"/>
+          <completion string="blog"/>
+          <completion string="members"/>
+          <completion string="categories"/>
+          <completion string="category"/>
+          <completion string="shop"/>
+          <completion string="forms"/>
+    </set>    
 <set name="perch.type.values" symbol="type">
 <behavior>
     <arguments shouldCompleteOnConfirm="true" />
