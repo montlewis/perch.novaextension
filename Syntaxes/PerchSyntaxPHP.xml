@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<syntax name="perchCMS.php">
+	<meta>
+		<name>Perch PHP</name>
+		<type>markup</type>
+		<preferred-file-extension>php</preferred-file-extension>
+		<parent>php</parent>
+	</meta>
+	<detectors>
+		<combo priority="1.0">
+			<extension>php</extension>
+			<match-content>perch</match-content>
+		</combo>
+		</detectors>
+		<scopes>
+			<include syntax="html" />
+		</scopes>
+		
+</syntax>

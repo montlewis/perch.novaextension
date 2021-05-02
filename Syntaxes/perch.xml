@@ -28,6 +28,14 @@
 				<string>perch:if</string>
 				<string>perch:blocks</string>
 				<string>perch:block</string>
+				<string>perch:group</string>
+				<string>perch:categories</string>
+				<string>perch:before</string>
+				<string>perch:after</string>
+				<string>perch:every</string>
+				<string>perch:noresults</string>
+				<string>perch:repeater</string>
+
 			</strings>
 			<capture number="1" name="perch.tag.name" />
 		</starts-with>
