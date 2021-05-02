@@ -44,18 +44,9 @@
 		<context behavior="subtree" group-by-name="true" unclosed="truncate" />
 	</symbol>
 	<starts-with>
-		<strings prefix="&lt;perch:" suffix="\b" word-boundary="false" case-insensitive="true">
-			<string>content</string>
-			<string>events</string>
-			<string>blog</string>
-			<string>members</string>
-			<string>shop</string>
-			<string>comments</string>
-			<string>gallery</string>
-			<string>mailchimp</string>
-			<string>twitter</string>
+		<strings prefix="&lt;perch" suffix="\b" word-boundary="false" case-insensitive="true">
+			<string>:</string>
 		</strings>
-		<capture number="1" name="perch.tag.name" />
 	</starts-with>
 	<ends-with>
 		<expression>/?&gt;</expression>
@@ -64,6 +55,14 @@
 		<include syntax="self" collection="perch.attributes" />
 	</subscopes>
 	</scope>
+	
+	<!-- edan test -->
+	<scope name="perch.tag.name" spell-check="false" lookup="documentation">
+	<symbol type="tag"/>
+
+		<expression>(?&lt;=perch:).[a-z]*</expression>
+	</scope>
+	<!-- end test -->
 
 
 <!-- Class attribute -->
