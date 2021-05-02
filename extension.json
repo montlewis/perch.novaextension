@@ -1,7 +1,7 @@
 {
-    "identifier": "org.PerchSyntax",
+    "identifier": "monty-lewis-design.PerchSyntax",
     "name": "PerchSyntax",
-    "organization": "monty-lewis-design",
+    "organization": "Monty Lewis Design",
     "description": "Auto-complete & syntax highlighting for Perch CMS",
     "version": "1.0",
     "bugs": "https://github.com/montlewis/perch.novaextension",
