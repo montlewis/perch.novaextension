@@ -1,8 +1,17 @@
 {
     "identifier": "org.PerchSyntax",
     "name": "PerchSyntax",
-    "organization": "MyOrganization",
-    "description": "Lorem ipsum, dolor sit amet.",
+    "organization": "monty-lewis-design",
+    "description": "Auto-complete & syntax highlighting for Perch CMS",
     "version": "1.0",
-    "categories": ["languages"]
+    "bugs": "https://github.com/montlewis/perch.novaextension",
+"activationEvents": [
+    "onLanguage:perch"
+],
+
+"categories": [
+    "completions"
+]
+
 }
+
