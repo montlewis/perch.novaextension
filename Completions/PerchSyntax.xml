@@ -2,7 +2,7 @@
 <completions>
     <provider name="perch.applications">
         <syntax>perchCMS</syntax>
-            <selector>perch.tag.name</selector>
+            <selector>html.tag.name</selector>
             <expression>(?&lt;=perch:).[a-z]*</expression>
 
             <set>perch.applications</set>
@@ -10,26 +10,26 @@
       
         <provider name="perch.terms">
         <syntax>perchCMS</syntax>
-            <selector>perch.tag.attribute.name</selector>
+            <selector>html.tag.attribute.name</selector>
             <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
             <set>perch.entities</set>
         </provider>
     
         <provider name="perch.type.values">
             <syntax>perchCMS</syntax>
-                <selector>perch.tag.attribute.type.value.double-quoted</selector>
-                <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
+                <selector>html.tag.attribute.value.double-quoted</selector>
+                <expression>(?&lt;=type=")(.[a-zA-Z]*)(?=")</expression>
                 <set>perch.type.values</set>
         </provider>
         <provider name="perch.tag.attribute.editor.value.double-quoted">
         <syntax>perchCMS</syntax>
-            <selector>perch.tag.attribute.editor.value.double-quoted</selector>
-            <expression>(?&lt;=(=&quot;|=\s&quot;|=&apos;|=\s&apos;|\s))[a-zA-Z0-9-_]*</expression>
+            <selector>html.tag.attribute.editor.value.double-quoted</selector>
+            <expression>(?&lt;=editor=")(.[a-zA-Z]*)(?=")</expression>
             <set>perch.tag.editor.value</set>
         </provider>
 
     <!-- Entities, Perch Tags. These are often part of the TYPE expansion. -->
-    <set name="perch.entities" symbol="tag">
+    <set name="perch.entities" symbol="property">
         <completion string="id" symbol="id">
             <behavior>
                 <append>=&quot;$[]&quot; &gt;</append>
@@ -192,9 +192,8 @@
         </behavior>
     </completion>
     </set>
-    <set name="perch.applications" symbol="name">
-<behavior complete-on-confirm="true">
-</behavior>
+    <set name="perch.applications" symbol="tag">
+
           <completion string="content"/>
           <completion string="events"/>
           <completion string="blog"/>
@@ -221,6 +220,24 @@
       <append> path=&quot;$[template-path]&quot; &gt;</append>
       </behavior>
       </completion>
+      <completion string="if"/>
+      <completion string="group">
+          <behavior>
+              <append>&gt;</append>
+          </behavior>
+      </completion>
+      <completion string="repeater">
+          <behavior>
+              <append> id=&quot;$[id]&quot; $[scope-parent]&gt;
+              </append>
+          </behavior>
+      </completion>
+      <completion string="before"/>
+      <completion string="after"/>
+      <completion string="else"/>
+
+
+
 
     </set>    
 <set name="perch.type.values" symbol="type">
