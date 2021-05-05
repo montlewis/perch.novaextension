@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completions>
+    <provider name="php.perch">
+        <syntax>advphp-base</syntax>
+        <selector>*:not(string,comment)</selector>
+        <expression>(?&lt;!\-&gt;|\$)(\b[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)</expression>
+
+        <symbols type="function">
+            <behavior>
+                <arguments prefix="(" suffix=")" separator=", " />
+            </behavior>
+        </symbols>
+<symbols type="class,protocol" />
+
+<set>php.perch</set>
+</provider>
+    <set name="php.perch">
+    <!-- members app -->
+    <completion string="perch_member_add_tag()"/>
+    <completion string="perch_member_form()"/>
+    <completion string="perch_member_get()"/>
+    <completion string="perch_member_has_tag()"/>
+    <completion string="perch_member_log_out()"/>
+    <completion string="perch_member_logged_in()"/>
+    <completion string="perch_member_remove_tag()"/>
+    <completion string="perch_member_login_form()"/>
+    <completion string="perch_member_secure_download()"/>
+    <!-- pages -->
+    <completion string="perch_page_modified()"/>
+    <completion string="perch_page_url()"/>
+    <completion string="perch_pages_breadcrumbs()"/>
+    <completion string="perch_pages_navigation_text()"/>
+    <completion string="perch_pages_navigation()"/>
+    <completion string="perch_pages_next_page()"/>
+    <completion string="perch_pages_parent_page()"/>
+    <completion string="perch_pages_previous_page()"/>
+    <completion string="perch_pages_title()"/>
+    <!-- shop app -->
+    <completion string="perch_shop_cart_item_count()"/>
+    <completion string="perch_shop_cart_total()"/>
+    <completion string="perch_shop_cart()"/>
+    <completion string="perch_shop_currency_form()"/>
+    <completion string="perch_shop_empty_cart()"/>
+    <completion string="perch_shop_location_form()"/>
+    <completion string="perch_shop_location_selected()"/>
+    <completion string="perch_shop_set_discount_code()"/>
+    <completion string="perch_shop_checkout()"/>
+    <completion string="perch_shop_addresses_set()"/>
+    <completion string="perch_shop_customer_address"/>
+    <completion string="perch_shop_customer_addresses()"/>
+    <completion string="perch_shop_edit_address_form()"/>
+    <completion string="perch_shop_order_address_form()"/>
+    <completion string="perch_shop_order()"/>
+    <completion string="perch_shop_orders()"/>
+    <completion string="perch_shop_brand()"/>
+    <completion string="perch_shop_brands()"/>
+    <completion string="perch_shop_customer_has_purchased_file()"/>
+    <completion string="perch_shop_download_file()"/>
+    <completion string="perch_shop_product_variants()"/>
+    <completion string="perch_shop_product()"/>
+    <completion string="perch_shop_products()"/>
+    <completion string="perch_shop_purchased_files()"/>
+    <completion string="perch_shop_shipping_method_form()"/>
+    <completion string="perch_shop_shipping_options()"/>
+    <!-- blog app -->
+    <completion string="perch_blog_author_for_post()"/>
+    <completion string="perch_blog_author"/>
+    <completion string="perch_blog_authors()"/>
+    <completion string="perch_blog_categories()"/>
+    <completion string="perch_blog_category()"/>
+    <completion string="perch_blog_custom()"/>
+    <completion string="perch_blog_date_archive_months()"/>
+    <completion string="perch_blog_date_archive_years()"/>
+    <completion string="perch_blog_post_categories()"/>
+    <completion string="perch_blog_post_comment_form()"/>
+    <completion string="perch_blog_post_comments()"/>
+    <completion string="perch_blog_post_field()"/>
+    <completion string="perch_blog_post_meta()"/>
+    <completion string="perch_blog_post_tags()"/>
+    <completion string="perch_blog_post()"/>
+    <completion string="perch_blog_recent_posts()"/>
+    <completion string="perch_blog_section()"/>
+    <completion string="perch_blog_sections()"/>
+    <completion string="perch_blog_tag()"/>
+    <completion string="perch_blog_tags()"/>
+    <completion string="perch_blogs()"/>
+    <completion string="perch_blog_post_webmention_endpoint()"/>
+    <completion string="perch_blog_post_ping_form()"/>
+    <!-- content -->
+    <completion string="perch_content_create()"/>
+    <completion string="perch_content_custom()"/>
+    <completion string="perch_content()"/>
+    <!-- collections -->
+    <completion string="perch_collection()"/>
+    <!-- categories -->
+    <completion string="perch_categories()"/>
+    <completion string="perch_category()"/>
+    <!-- layout -->
+    <completion string="perch_layout_has()"/>
+    <completion string="perch_layout_var()"/>
+    <completion string="perch_layout()"/>
+    <!-- form -->
+    <completion string="perch_form()"/>
+    <!-- events -->
+    <completion string="perch_events_calendar()"/>
+    <completion string="perch_events_custom()"/>
+    <completion string="perch_events_listing()"/>
+    <!-- comments -->
+    <completion string="perch_comment()"/>
+    <completion string="perch_comments_count()"/>
+    <completion string="perch_comments()"/>
+    <completion string="perch_comments_form()"/>
+    <!-- page -->
+    <completion string="perch_page_attribute()"/>
+    <completion string="perch_page_attributes_extend()"/>
+    <completion string="perch_page_attributes()"/>
+    <!-- search -->
+    <completion string="perch_content_search()"/>
+    <completion string="perch_search_form()"/>
+    <!-- twitter -->
+    <completion string="perch_twitter_get_latest()"/>
+    <completion string="perch_twitter_get_random()"/>
+    <completion string="perch_twitter_widget_js()"/>
+    <!-- gallery -->
+    <completion string="perch_gallery_adjacent_images()"/>
+    <completion string="perch_gallery_album_details()"/>
+    <completion string="perch_gallery_album_field()"/>
+    <completion string="perch_gallery_album_images()"/>
+    <completion string="perch_gallery_albums()"/>
+    <completion string="perch-gallery-build()"/>
+    <completion string="perch_gallery_image()"/>
+    <completion string="perch_gallery_images()"/>
+    </set>
+</completions>
