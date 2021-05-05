@@ -4,13 +4,69 @@
 		<name>perch subsyntax</name>
 		<type>html</type>
 	</meta>
-
-
-
 <collections>
-
 <collection name="perch.entities">      
+<!-- perch tags that need matching closing tags -->
+	<scope name="perch.tag.open.paired" spell-check="false" lookup="documentation">
+		<symbol type="tag-heading">
+			<display-name>
+				<component variable="perch.tag" />
+				<component selector="perch.tag"  />
+				<component selector="perch.tag.attribute"  />
+				<component selector="perch.tag.attribute.value"  />
+			</display-name>
+			<context behavior="start" group-by-name="true" unclosed="parent">
+				<auto-close string="&lt;/" completion="${name}&gt;" />
+			</context>
+		</symbol>
+		<starts-with>
+			<strings prefix="&lt;" suffix="\b" word-boundary="false" case-insensitive="true">
+				<string>perch:if</string>
+				<string>perch:blocks</string>
+				<string>perch:block</string>
+				<string>perch:group</string>
+				<string>perch:categories</string>
+				<string>perch:before</string>
+				<string>perch:after</string>
+				<string>perch:every</string>
+				<string>perch:noresults</string>
+				<string>perch:repeater</string>
 
+			</strings>
+			<capture number="1" name="perch.tag.name" />
+		</starts-with>
+		<ends-with>
+			<expression>/?&gt;</expression>
+		</ends-with>
+		<subscopes>
+			<include syntax="self" collection="perch.attributes" />
+		</subscopes>
+	</scope>     
+<!-- perch tags (self-closing tags) -->
+	<scope name="perch.tag.open.single" spell-check="false" lookup="documentation">
+	<symbol type="tag">
+		<context behavior="subtree" group-by-name="true" unclosed="truncate" />
+	</symbol>
+	<starts-with>
+		<strings prefix="&lt;perch" suffix="\b" word-boundary="false" case-insensitive="true">
+			<string>:</string>
+		</strings>
+	</starts-with>
+	<ends-with>
+		<expression>/?&gt;</expression>
+	</ends-with>
+	<subscopes>
+		<include syntax="self" collection="perch.attributes" />
+	</subscopes>
+	</scope>
+	
+	<!-- edan test -->
+	<scope name="perch.tag.name" spell-check="false" lookup="documentation">
+	<symbol type="tag"/>
+
+		<expression>(?&lt;=perch:).[a-z]*</expression>
+	</scope>
+	<!-- end test -->
 
 <!-- comment block -->
 <scope name="perch.comment.block">
@@ -21,8 +77,178 @@
 		<expression>\*--&gt;</expression>
 	</ends-with>
 </scope>
+<!-- Closing Tags -->
+<scope name="perch.tag.close" spell-check="false" lookup="documentation">
+	<symbol type="tag">
+		<context behavior="end" group-by-name="true" unclosed="truncate" />
+	</symbol>
+	<expression>&lt;/perch:([a-zA-Z_][a-zA-Z0-9_:-]*)&gt;</expression>
+	<capture number="1" name="perch.tag.name" />
+</scope>
 
 </collection>
+
+<!-- Tag Attributes -->
+<collection name="perch.attributes">
+	<!-- ID attribute -->
+	<scope name="perch.tag.attribute.id.double-quoted">
+		<starts-with>
+			<expression>((?i:id))\s*(=)\s*(&quot;)</expression>
+			<capture number="1" name="perch.tag.attribute.name" />
+			<capture number="2" name="perch.tag.attribute.equals-sign" />
+			<capture number="3" name="perch.tag.attribute.value.quote.left" />
+		</starts-with>
+		<ends-with>
+			<expression>&quot;</expression>
+			<capture number="0" name="perch.tag.attribute.value.quote.right" />
+		</ends-with>
+		<subscopes>
+			<scope name="perch.tag.attribute.id.value.double-quoted">
+				<starts-with>
+					<expression>(?&lt;=&quot;)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=&quot;)</expression>
+				</ends-with>
+				<subscopes>
+					<scope name="perch.tag.attribute.value.escape">
+						<expression>\\\\|\\&quot;</expression>
+					</scope>
+				</subscopes>
+			</scope>
+		</subscopes>
+	</scope>
+	<!-- Class attribute -->
+	<scope name="perch.tag.attribute.class.double-quoted">
+		<starts-with>
+			<expression>((?i:class))\s*(=)\s*(&quot;)</expression>
+			<capture number="1" name="perch.tag.attribute.name" />
+			<capture number="2" name="perch.tag.attribute.equals-sign" />
+			<capture number="3" name="perch.tag.attribute.value.quote.left" />
+		</starts-with>
+		<ends-with>
+			<expression>&quot;</expression>
+			<capture number="0" name="perch.tag.attribute.value.quote.right" />
+		</ends-with>
+		<subscopes>
+			<scope name="perch.tag.attribute.class.value.double-quoted">
+				<starts-with>
+					<expression>(?&lt;=&quot;)</expression>
+				</starts-with>
+				<ends-with>
+					<expression>(?=&quot;)</expression>
+				</ends-with>
+				<subscopes>
+					<scope name="perch.tag.attribute.value.escape">
+						<expression>\\\\|\\&quot;</expression>
+					</scope>
+				</subscopes>
+			</scope>
+		</subscopes>
+	</scope>
+<!-- type attribute	 -->
+<scope name="perch.tag.attribute.type.double-quoted">
+<starts-with>
+	<expression>((?i:type))\s*(=)\s*(&quot;)</expression>
+	<capture number="1" name="perch.tag.attribute.name" />
+	<capture number="2" name="perch.tag.attribute.equals-sign" />
+	<capture number="3" name="perch.tag.attribute.value.quote.left" />
+</starts-with>
+<ends-with>
+	<expression>&quot;</expression>
+	<capture number="0" name="perch.tag.attribute.value.quote.right" />
+</ends-with>
+<subscopes>
+	<scope name="perch.tag.attribute.type.value.double-quoted">
+		<starts-with>
+			<expression>(?&lt;=&quot;)</expression>
+		</starts-with>
+		<ends-with>
+			<expression>(?=&quot;)</expression>
+		</ends-with>
+		<subscopes>
+			<scope name="perch.tag.attribute.value.escape">
+				<expression>\\\\|\\&quot;</expression>
+			</scope>
+		</subscopes>
+	</scope>
+</subscopes>
+</scope>
+<!-- editor attribute	 -->
+<scope name="perch.tag.attribute.editor.double-quoted">
+<starts-with>
+	<expression>((?i:editor))\s*(=)\s*(&quot;)</expression>
+	<capture number="1" name="perch.tag.attribute.name" />
+	<capture number="2" name="perch.tag.attribute.equals-sign" />
+	<capture number="3" name="perch.tag.attribute.value.quote.left" />
+</starts-with>
+<ends-with>
+	<expression>&quot;</expression>
+	<capture number="0" name="perch.tag.attribute.value.quote.right" />
+</ends-with>
+<subscopes>
+	<scope name="perch.tag.attribute.editor.value.double-quoted">
+		<starts-with>
+			<expression>(?&lt;=&quot;)</expression>
+		</starts-with>
+		<ends-with>
+			<expression>(?=&quot;)</expression>
+		</ends-with>
+		<subscopes>
+			<scope name="perch.tag.attribute.value.escape">
+				<expression>\\\\|\\&quot;</expression>
+			</scope>
+		</subscopes>
+	</scope>
+</subscopes>
+</scope>
+	<!-- Generic attributes -->
+	<scope name="perch.tag.attribute.double-quoted">
+		<starts-with>
+			<expression>([a-zA-Z_][a-zA-Z0-9-_]*)\s*(=)\s*(&quot;)</expression>
+			<capture number="1" name="perch.tag.attribute.name" />
+			<capture number="2" name="perch.tag.attribute.equals-sign" />
+			<capture number="3" name="perch.tag.attribute.value.quote.left" />
+		</starts-with>
+		<ends-with>
+			<expression>(&quot;)</expression>
+			<capture number="1" name="perch.tag.attribute.value.quote.right" />
+		</ends-with>
+		<subscopes>
+			<include syntax="self" collection="perch-attribute-values-double-quoted" />
+		</subscopes>
+	</scope>
+	<scope name="perch.tag.attribute.unquoted">
+		<starts-with>
+			<expression>([a-zA-Z_][a-zA-Z0-9-_]*)\s*(=)\s*</expression>
+			<capture number="1" name="perch.tag.attribute.name" />
+			<capture number="2" name="perch.tag.attribute.equals-sign" />
+		</starts-with>
+		<ends-with>
+			<expression>(?=\s|/|&gt;|$)</expression>
+		</ends-with>
+		<subscopes>
+			<include syntax="self" collection="perch-attribute-values-double-quoted" />
+		</subscopes>
+	</scope>
+</collection>
+<!-- Attribute values -->
+<collection name="perch-attribute-values-double-quoted">
+	<scope name="perch.tag.attribute.value.double-quoted">
+		<starts-with>
+			<expression>(?&lt;=&quot;)</expression>
+		</starts-with>
+		<ends-with>
+			<expression>(?=&quot;)</expression>
+		</ends-with>
+		<subscopes>
+			<scope name="perch.tag.attribute.value.escape">
+				<expression>\\\\|\\&quot;</expression>
+			</scope>
+		</subscopes>
+	</scope>
+</collection>
+
 
 </collections>
 </syntax>
